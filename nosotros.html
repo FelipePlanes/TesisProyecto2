@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bienes Raices</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css"> <!-- libreria qe sirve para estandarizar el css -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- es recomendable tener mi hoja de estilos al final -->
+</head>
+
+<body>
+    <header class="site-header"> <!--Solo un id por documento-->
+        
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <a href="/index.html">
+                    <img src="/img/logo.svg" alt="Logotipo de Bienes Raices">
+                </a>
+
+                <nav class="navegacion">
+                    <a href="/nosotros.html">Nosotros</a>
+                    <a href="/anuncios.html">Anuncios</a>
+                    <a href="/blog.html">Blog</a>
+                    <a href="/contacto.html">Contacto</a>
+                </nav>
+            </div> <!--Barra de menu-->
+        </div> <!--Contenedor -->
+
+    </header>
+    <!--es importante tener una etiqueta main y un h1, para indicarle al navegador que este es el contenido principal de la pagina web */ -->
+    <main class="contenedor">
+        <h1 class="fw-300 centrar-texto">Conoce Sobre Nosotros</h1>
+        <!--Aqui usaré cssgrid que es el estandar junto a flexbox-->
+        <div class="contenido-nosotros">
+            <div class="imagen">
+                <img src="img/nosotros.jpg" alt="Imagen Sobre Nosotros">
+            </div>
+            <div class="texto-nosotros">
+                <blockquote>
+                    25 Años de Experiencia
+                </blockquote>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quidem dicta consequuntur maxime obcaecati, hic consequatur molestiae illum sequi nostrum tempora sunt inventore sapiente ea nisi! Pariatur est nisi laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus, quo aut? Aperiam saepe perferendis temporibus accusamus, omnis neque possimus corrupti ad ducimus quaerat eius cum iusto praesentium est, similique nesciunt.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ab hic vitae totam voluptatibus enim nobis pariatur, consequatur consequuntur delectus odio incidunt unde suscipit vel provident, impedit, quibusdam dolorem voluptate.</p>
+                
+            </div>
+        </div>
+
+    </main>
+
+    <section class="contenedor seccion">
+        <h2 class="fw-300 centrar-texto">Más Sobre Nosotros</h2>
+        <div class="iconos-nosotros"> <!--Padre para otros divs que permite hacer el uso del Flexbox en css-->
+            <div class="iconos">
+                <img src="/img/icono1.svg" alt="Icono de Seguridad">
+                <h3>Seguridad</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facilis repudiandae, eaque dolore maxime laboriosam rem amet, nostrum dicta, enim quo? Odit adipisci, repellendus iusto labore molestiae nam illo! Reprehenderit?</p>    
+            </div>
+
+            <div class="iconos">
+                <img src="/img/icono2.svg" alt="Icono de Mejor Precio">
+                <h3>Mas Sobre Nosotros</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis libero labore molestiae dolorum cupiditate, aut, excepturi eos distinctio quis, quae enim alias. Eveniet sit veniam cumque dolorum odit eos similique?</p>
+            </div>
+
+            <div class="iconos">
+                <img src="/img/icono3.svg" alt="Icono de a Tiempo">
+                <h3>A Tiempo</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quod ipsum atque voluptatibus! Soluta reprehenderit quo repellendus, architecto officiis adipisci voluptatem neque! Est exercitationem esse optio illo reprehenderit saepe quasi!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="/nosotros.html">Nosotros</a>
+                <a href="/anuncios.html">Anuncios</a>
+                <a href="/blog.html">Blog</a>
+                <a href="/contacto.html">Contacto</a>
+            </nav>
+            <p class="copyright">Todos los Derechos Reservados 2019 &copy;</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+/* Flexbox sirve para posicionar elementos dentro de un contenedor y solo afecta el primer nivel de hijos*/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* reset para REMS - 62.5% = 10px ya casi no se utiliza px (pixeles) porque trae problemas al momento de mostrar y escalar los diseños en pantallas con muchos o pocos pixeles, rem en cambio permite hacer un ajuste casi perfecto */
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* box-sizing es un sniped que hace que no nos afecte si se agrega un ancho de 200px y un pading no se incremente el ancho y se mantenga */
+
+body { /* aplica a todo el cuerpo o body*/
+    font-family: 'Lato', sans-serif; /* forma de cambiar la fuente del texto */
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+/* Globales */
+
+/*para que las imagenes sean responsivas*/
+img {
+    max-width: 100%;
+}
+
+.contenedor {
+    max-width: 120rem; /** = 1200px **/
+    /** margin-left: auto;
+        margin-right: auto; 
+        equivale al margin: 0 auto 0 auto; **/
+
+    /** el comunmente usado es margin y este lleva 4 parametros, arriba, derecha, abajo e izquirda de la ventana */
+    margin: 0 auto 0 auto;
+
+    }
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 3.4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.6rem;
+}
+
+/** Utilidades **/
+.seccion { /**Separaciones arriba y abajo**/
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.centrar-texto {
+    text-align: center;
+}
+
+.d-block {
+    display: block!important; /*lo toma si o si, sin importar la regla del cascada en css*/
+}
+
+.contenido-centrado {
+    max-width: 800px;
+}
+
+/**  Botones **/
+
+.boton {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.8rem;
+    padding: 1rem 3rem; /* alto y ancho */
+    margin-top: 3rem ;
+    display: inline-block;
+    /*los enlaces son display inline, si le quiero dar un ancho o un margen los tengo que modificar a display block o inline-block*/
+    text-align: center;
+    border-radius: 0.9rem;
+    border: none;
+}
+
+.boton:hover { /*Para que se muestre la manito sobre los botones*/
+    cursor: pointer;
+}
+
+.boton-naranja {
+    background-color: orange;
+}
+
+.boton-verde {
+    background-color: green;
+}
+
+/* Header */
+
+/*este se aplica cuando solo se llama a la clase site-header*/
+.site-header {
+    background-color: #333333;
+    padding: 1rem 0 3rem 0;
+}
+
+/* y este cuando se llama tanto site-headar como inicio */
+.site-header.inicio {
+    background: url(../img/header.jpg); /*sirve para imagenes y colores*/
+    background-position: center center; /*centrar imagen*/
+    background-size: cover; /*ajuste a tamaño de ventana*/
+    height: 100vh; /* para que mida lo que mide la pantalla*/
+    min-height: 60rem; /* = 600px lo min que puede medir*/
+}
+/* usare el standar de flexbox para organizar elementos dentro de los contenedores */
+
+.contenido-header {
+    height: 100%; /* para que rellene lo que falta del padre y tome todo el header (?) video 36*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.contenido-header h1 {
+    color: white;
+    font-size: 4.3rem;
+    padding-bottom: 2rem; /*el padding es separacion dentro del contenedor y el margin es separacion fuera del contendor */
+    max-width: 65rem; /*maximo tamaño de ancho*/
+    line-height: 1.5; /* interlineado */
+}
+
+.barra {
+    display: flex; /* habilito el flex (titulo del lado derecho y menu del lado derecho) */
+    justify-content: space-between; /* permite alinear horizontalmente */
+    align-items: center; /* permite alinear verticalmente */
+    padding-top: 3rem; /* no se usa el margin-top porque haria  el margen superior a todo el contenido de la pagina, con el padding solo baja el contendor */
+}
+
+/* Navegacion */
+/* se toman los hijos de la clase en este caso la etiqueta a de enlaces */
+.navegacion a {
+    color: white; /* la ventaja con el modo de color de rgba es que permite incluir transparencia en su ultimo valor, tambien se puede usar hexadecimal (#ffffff) */
+    text-decoration: none; /*quita el rayado*/
+    font-size: 2.5rem;
+    margin-right: 2rem;
+}
+.navegacion a:last-of-type { /* el seudoselector escoje el ultimo elemento y le aplica la propiedad */
+    margin: 0; 
+}
+
+/* uno de los seudoselectores mas comunes es hover y se utiliza para cambiar el color cuando se le posiciona el cursor sobre el elemento */
+.navegacion a:hover {
+    color: yellowgreen;
+}
+
+/** iconos nosotros **/
+.iconos-nosotros {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.iconos {
+    flex-basis: calc(33.3% - 1rem); 
+    /*es buena practica usar porcentajes para en cuanto al responsive diseño se refiere */
+    text-align: center;
+}
+
+/** calc realiza una funcion matematica donde primero se coloca el tamaño que quieres que mida cada uno de los elementos (33.3%) y segundo le resta la cantidad de pixeles para hacer el espaciado (1rem)
+
+Calc es muy util para que el diseño del hijo se vea bien mezclada con la definicion en el padre de justify-content: sapce-between; **/
+
+.iconos h3 {
+    text-transform: uppercase;
+}
+
+/** Anuncios **/
+
+.contenedor-anuncios {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0;
+    margin-left: 0;
+    flex-wrap: wrap; /* corta el contenido, los anuncios y los posiciona 3 debajo de 3*/
+}
+.anuncio {
+    /* flex-grow: 1; si es 1 le dice al navegador que tome la base del basis pero si tiene la posibilidad de acuerdo a la pantalla de crecer mas, entonces crece, si     es 0 entonces se queda del tamaño del basis */
+    /* flex-shrink:0 ; quiere decir que el contenido no se encoja y siempre tome el tamaño de la base es decir el de flex-basis*/
+    /* flex-basis: calc(33.3% - 1rem); */
+    
+    /* las tres propiedades anteriores se pueden resumir en una sola linea de la siguiente forma, tomando en cuenta que el primer campo es de flex-grow el segundo es de flex-shrink y el tercero es de flex-basis ----> */
+
+    flex: 0 0 calc(33.3% - 1rem);
+    
+    border-style: solid;
+    border-color: orange;
+    border-width: 0.15rem;
+    /* Los tres anteriores se pueden simplificar en una sola linea de la siguiente forma: 
+    border: 0.2rem solid orange;
+    */
+    background-color: #f5f5f5;
+    margin-bottom: 2rem;
+}
+
+.contenido-anuncio {
+    padding: 2rem; /*margenes internos en los 4 lados*/
+}
+
+.contenido-anuncio h3, 
+.contenido-anuncio p {
+    margin: 0;
+}
+
+.precio {
+    color: green;
+    font-weight: 700;
+}
+
+.iconos-caracteristicas {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1; /*para que crezca pero siempre limitado por los 500px*/
+    max-width: 500px; /*que solo midan hasta 500px*/
+}
+
+.iconos-caracteristicas li {
+    display: flex;
+}
+
+.iconos-caracteristicas img {
+    margin-right: 2rem;
+}
+
+.ver-todas {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*contacto home*/
+
+.imagen-contacto {
+    background-image: url(../img/encuentra.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+}
+
+.contenido-contacto {
+    flex: 1; /*detecta cuanto tamaño hay disponible y se lo asigna a la cantidad de elementos que hayan en partes iguales*/
+    color: white;
+}
+
+.contenido-contacto p {
+    font-size: 1.8rem;
+}
+
+/**Sección Inferior**/
+
+.seccion-inferior {
+    display: flex;
+    justify-content: space-between;
+}
+
+.seccion-inferior .blog{
+    flex-basis: 60%;
+}
+
+.seccion-inferior .testimoniales{
+    flex-basis: calc(40% - 2rem);
+}
+
+.entrada-blog {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.entrada-blog:last-of-type {
+    margin-bottom: 0;
+}
+
+.entrada-blog .imagen {
+    flex-basis: 40%;
+}
+
+.entrada-blog .texto-entrada {
+    flex-basis: calc(60% - 3rem);
+}
+
+.texto-entrada a {
+    color: black;
+    text-decoration: none;
+}
+
+.texto-entrada h4 {
+    margin: 0;
+    line-height: 1.4;
+}
+
+/*Creacion de un seudoelemento (inexistente) creado virtualmente*/
+
+.texto-entrada h4::after {
+    content: '';
+    display: block;
+    width: 15rem;
+    height: .5rem;
+    background-color: green;
+    margin-top: 1rem;
+}
+
+.texto-entrada span {
+    color:orange;
+}
+
+/** Testimoniales **/
+
+.testimonial {
+    background-color: green;
+    font-size: 2.4rem;
+    padding: 2rem;
+    color: white;
+    border-radius: 2rem;
+}
+
+.testimonial p {
+    text-align: right;
+}
+
+.testimonial blockquote::before {
+    content: '';
+    background-image: url(../img/comilla.svg);
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    left: -2rem;
+}
+
+.testimonial blockquote {
+    position: relative;
+    padding-left: 5rem;
+    font-weight: 300;
+}
+/* el blockquote es el padre de la comilla por lo que el before viende siendo hijo del blockquote siempre que se utiliza position el elemento padre debe tener una posicion relativa eso le dice al navegador pon el elemento en su default, en cambio el hijo del elemento se coloca en position: absolute y esto permite utilizar funciones en el hijo tales como top, left, botton, right, la ventaja de esto es que permite posicionar un elemento en un lugar en especifico*/
+
+/* FOOTER */
+
+.site-footer {
+    background-color: #333333;
+    margin: 0;
+}
+
+.contenedor-footer {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.copyright {
+    margin: 0;
+    color: white;
+}
+
+/** PAGINAS INTERNAS **/
+
+/**NOSOTROS**/
+.contenido-nosotros {
+    display: grid;
+    grid-template-columns: 50% 50%; /*tambien se puede usar repeat(2, 50%)*/
+    /*para crear separacion entre columnas se usa: */
+    grid-column-gap: 2rem;
+}
+
+.texto-nosotros blockquote {
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0;
+    padding: 1rem 0 3rem 0 ;
+}
+
+/*ANUNVIO*/
+.resumen-propiedad {
+    display: flex;
+    justify-content: space-between; /*alineacion horzontal*/
+    align-items: center; /*alineacion vertical*/
+}
+
+/** CONTACTO **/
+
+.contacto p {
+    font-size: 1.5rem;
+    color: #4f4f4f;
+    margin: 2rem 0 0 0;
+}
+
+legend {
+    font-size: 2.4rem;
+    color: #4f4f4f;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/*lo aplico a todos los inputs menos al submit*/
+input:not([type="submit"]),
+textarea,
+select {
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+input[type="radio"] {
+    width: auto; /*toma unicamente el espacio que requieres no tomes mas de ahi*/
+    margin: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+textarea {
+    height: 20rem;
+}
+
+.forma-contacto {
+    max-width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
